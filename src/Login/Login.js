@@ -59,8 +59,8 @@ function Login() {
         setLoading(true);
     
         const staticCredentials = {
-          email: "Bhole123@gmail.com",  
-          password: "Bhole@123",     
+          email: "bhole123@gmail.com",  
+          password: "bhole@123",     
         };
     
         if (email === staticCredentials.email && password === staticCredentials.password) {

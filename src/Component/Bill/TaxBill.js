@@ -34,7 +34,7 @@ const TaxInvoice = () => {
     const amtRs = Number(performa.amtRs);
     const cgst = amtRs * 0.09;
     const sgst = amtRs * 0.09;
-    const totalAmt = amtRs + cgst + sgst;
+    const totalAmt = Number(performa.amtRs) + Number(performa.cgst) + Number(performa.sgst);
 
     return (
         <div>
@@ -139,8 +139,8 @@ const TaxInvoice = () => {
                         <p>
                             <strong>SAC Code :</strong> {performa.sac_code}
                         </p>
-                        <p>
-                            <strong>Particulars :</strong> {performa.particulars}
+                        <p style={{ whiteSpace: 'pre-wrap' }}>
+                            <strong>Particulars:</strong> {performa.particulars}
                         </p>
                     </div>
                     <div style={{ width: '38.5%', border: '1px solid black', padding: '10px' }}>
@@ -148,10 +148,10 @@ const TaxInvoice = () => {
                             <strong>AMT. (Rs)</strong> {performa.amtRs.toLocaleString()}
                         </p>
                         <p style={{ fontSize: '12px', marginTop: '100px' }}>
-                            <strong>CGST @9% :</strong> {cgst.toLocaleString()}
+                            <strong>CGST @9% :</strong> {performa.cgst.toLocaleString()}
                         </p>
                         <p style={{ fontSize: '12px' }}>
-                            <strong>SGST @9% :</strong> {sgst.toLocaleString()}
+                            <strong>SGST @9% :</strong> {performa.sgst.toLocaleString()}
                         </p>
                     </div>
                 </div>
@@ -163,7 +163,7 @@ const TaxInvoice = () => {
                     </div>
                     <div style={{ width: '38.5%', border: '1px solid black', padding: '10px' }}>
                         <p>
-                            <strong>Total AMT. (Rs):</strong> {totalAmt.toLocaleString()}
+                            <strong>Total AMT. (Rs):</strong> {performa.tot.toLocaleString()}
                         </p>
                     </div>
                 </div>

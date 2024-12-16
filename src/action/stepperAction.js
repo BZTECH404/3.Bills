@@ -5,14 +5,14 @@ const initialState = {
   BillType: '',
   companyName: '',
   companyPanNo: '',
-  state: '',
+  state: 'Maharashtra',
   invoiceNo: '',
   receiverName: '',
   gstin: '',
   receiverAddress: '',
   receiverGstin: '',
   receiverState: '',
-  stateCode: '',
+  stateCode: '27',
   projectNo: '',
   invoiceDate: '',
   projectReferenceNo: '',
@@ -25,6 +25,10 @@ const initialState = {
   ifscCode: '',
   accountName: '',
   sac_code: '',
+  cgst:'',
+  sgst:'',
+  tot:'',
+  gst:true
 };
 
 const performaSlice = createSlice({

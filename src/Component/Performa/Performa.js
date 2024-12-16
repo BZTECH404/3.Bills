@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { TextField, Grid, Typography, Box, Container } from '@material-ui/core';
 import { updateField } from '../../action/stepperAction'; // Adjust the path based on your file structure
@@ -6,10 +6,16 @@ import { updateField } from '../../action/stepperAction'; // Adjust the path bas
 function Performa() {
   const dispatch = useDispatch();
   const performa = useSelector((state) => state.performa);
-
+  const [gst,setgst]=useState(true)
   const handleFieldChange = (event) => {
     const { id, value } = event.target;
+    // console.log(value)
     dispatch(updateField({ fieldId: id, value }));
+  };
+  const handleGSTChange = (value) => {
+
+    // console.log(value)
+    dispatch(updateField({ fieldId: "gst", value }));
   };
   return (
     <Container
@@ -27,7 +33,7 @@ function Performa() {
           INVOICE
         </Typography>
         <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               id="BillType"
               label="Bill Type"
@@ -169,7 +175,7 @@ function Performa() {
               value={performa.workOrderNo}
               onChange={handleFieldChange} />
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <TextField
               id="particulars"
               label="Particulars"
@@ -178,6 +184,21 @@ function Performa() {
               fullWidth
               value={performa.particulars}
               onChange={handleFieldChange}
+            />
+          </Grid> */}
+          <Grid item xs={12}>
+            <TextField
+              id="particulars"
+              label="Particulars"
+              variant="outlined"
+              multiline
+              fullWidth
+              rows={4} // Optional: Specifies a default visible row count
+              value={performa.particulars}
+              onChange={(e) => handleFieldChange(e)}
+              inputProps={{
+                style: { whiteSpace: 'pre-wrap' }, // Ensures newlines are rendered
+              }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -196,6 +217,56 @@ function Performa() {
               value={performa.amtWords}
               onChange={handleFieldChange} />
           </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="cgst"
+              label="CGST"
+              variant="outlined"
+              fullWidth
+              value={performa.cgst}
+              onChange={handleFieldChange}
+            />
+          </Grid>
+          <button 
+           id="gst"
+           label="GST"
+           variant="outlined"
+           fullWidth
+           value={performa.gst}
+          onClick={(e)=>{handleGSTChange(!performa.gst)
+            // console.log(performa.gst)
+          }}>Disable GST</button>
+          
+          {gst && (<Grid item xs={12} sm={6}>
+            <TextField
+              id="sgst"
+              label="SGST"
+              variant="outlined"
+              fullWidth
+              value={performa.sgst}
+              onChange={handleFieldChange}
+            />
+          </Grid>)}
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="tot"
+              label="Total"
+              variant="outlined"
+              fullWidth
+              value={performa.tot}
+              onChange={handleFieldChange}
+            />
+          </Grid>
+          {/* <Grid item xs={12} sm={6}>
+            <TextField
+              id="amt"
+              label="AMT"
+              variant="outlined"
+              fullWidth
+              value={performa.amt}
+              onChange={handleFieldChange}
+            />
+          </Grid> */}
         </Grid>
       </Box>
     </Container>

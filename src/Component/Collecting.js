@@ -8,7 +8,7 @@ import VivekBholeArc from './Bill/VivekBholeArc';
 import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 
 function Collecting() {
-    const [selectedInvoice, setSelectedInvoice] = useState('ProformaInvoice');
+    const [selectedInvoice, setSelectedInvoice] = useState('NeoMorden');
     const navigate = useNavigate();
 
     const handleSelectChange = (event) => {
